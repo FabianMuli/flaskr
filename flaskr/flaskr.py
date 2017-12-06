@@ -1,3 +1,6 @@
+"""
+The backend of the app
+"""
 #all imports
 import os
 import feedparser
@@ -67,7 +70,7 @@ def add_entry():
         abort(401)
     db = get_db()
     db.execute('insert into entries(title, text) values (?, ?)',
-            [request.form['title'], request.form['text']])
+               [request.form['title'], request.form['text']])
     db.commit()
     flash("New message was successfully send")
     return redirect(url_for('show_entries'))
@@ -89,7 +92,7 @@ def login():
     return render_template('login.html', error=error, form=form)
 
 #feed
-@app.route('/feed', methods=['GET','POST'])
+@app.route('/feed', methods=['GET', 'POST'])
 def feed():
     feed = feedparser.parse(BBC_FEED)
     first_article = feed['entries'][0]
@@ -100,7 +103,7 @@ def feed():
                            first_article=first_article)
 
 #popular posts
-@app.route('/popular_posts', methods=['GET','POST'])
+@app.route('/popular_posts', methods=['GET', 'POST'])
 def popular_posts():
     error = None
     if not session.logged_in():
@@ -108,7 +111,7 @@ def popular_posts():
     render_template("popular_posts.php", error=error)
 
 #friends page
-@app.route('/friends', methods=['GET','POST'])
+@app.route('/friends', methods=['GET', 'POST'])
 def friends():
     error = None
     if not session.logged_in():
