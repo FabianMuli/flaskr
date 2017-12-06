@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Fabchat</title>
+
+        <link href="\static\style.css" rel="stylesheet">
+         
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+        rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+         crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <div class=page>
+
+
+            {% for message in get_flashed_messages() %}
+
+            <div class=flash>
+                {{message}}
+            </div>
+            {% endfor %} {% block body %}{% endblock %}
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                document.body.style.backgroundColor = "white";
+            }
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+        <script src="https: //cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/af.js">
+        </script>
+    </body>
+
+    {% if session.logged_in %}
+    <footer style="background-color: white;">
+        <!--
+        <div id="icons" class="fixed-bar">
+            Follow Us:
+            <br />
+            <a href="https://www.facebook.com/fabian muema" class="fa fa-facebook" target="_blank" title="facebook"></a>
+            <a href="https://www.twitter.com/fabianmuema" class="fa fa-twitter" target="_blank" title="twitter"></a>
+            <a href="https://www.googleplus.com/fabian muema" class="fa fa-google-plus" target="_blank" title="googleplus"></a>
+            <a href="https://www.linkedin.com/fabian muema" class="fa fa-linkedin" target="_blank" title="linkedIn"></a>
+            <a href="https://www.youtube.com/fabian muema" class="fa fa-youtube" target="_blank" title="youtube"></a>
+            <a href="https://www.instagram.com/fabian_muema_m" class="fa fa-instagram" target="_blank" title="instagram"></a>
+            <a href="https://www.pinterest.com/fabian muema" class="fa fa-pinterest" target="_blank" title="pinterest"></a>
+            <a href="https://www.skype.com/fabian muema" class="fa fa-skype" target="_blank" title="skype"></a>
+            <a href="https://www.reddit.com/fabian muema" class="fa fa-reddit" target="_blank" title="reddit"></a>
+            <br />
+        </div>
+            -->
+        <br />
+        <a href="#privacy policy" style="color: black; text-decoration: none;"><i><u>privacy policy</u></i></a>
+        <br />
+
+        <br />
+
+        <p class="copyright">&copy iPhoenix.net</p>
+        <!--copyright symbol-->
+    </footer>
+    {% endif %}
+
+</html>
