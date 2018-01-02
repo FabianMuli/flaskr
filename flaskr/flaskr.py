@@ -1,6 +1,7 @@
 """
 The backend of the app
 """
+
 #all imports
 import os
 import feedparser
@@ -75,6 +76,12 @@ def add_entry():
     flash("New message was successfully send")
     return redirect(url_for('show_entries'))
 
+#delete all entries
+@app.route('/', methods=['GET','POST'])
+def delete():
+    error = None
+    if request.method = 'POST':
+        
 #login
 @app.route('/', methods=['GET', 'POST'])
 def login():
