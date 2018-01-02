@@ -80,8 +80,9 @@ def add_entry():
 @app.route('/', methods=['GET','POST'])
 def delete():
     error = None
-    if request.method = 'POST':
-        
+    if not session.get('logged_in'):
+        abort(401)
+    
 #login
 @app.route('/', methods=['GET', 'POST'])
 def login():
