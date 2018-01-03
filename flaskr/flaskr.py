@@ -77,12 +77,12 @@ def add_entry():
     return redirect(url_for('show_entries'))
 
 #delete all entries
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def delete():
     error = None
     if not session.get('logged_in'):
         abort(401)
-    
+
 #login
 @app.route('/', methods=['GET', 'POST'])
 def login():
