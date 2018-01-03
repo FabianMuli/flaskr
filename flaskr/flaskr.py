@@ -7,7 +7,6 @@ import os
 import feedparser
 import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
-from .forms import LoginForm, SignupForm
 
 BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
@@ -21,7 +20,7 @@ app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'flask.db'),
     SECRET_KEY='b\x1f\xe9Z\xf5\x9c\x1dK\x9d\x01h\xca\xa372\xf8\xd0y\x7f\x96W\xdf-\xfc\xf8',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='fabian'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 

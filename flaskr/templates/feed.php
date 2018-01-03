@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Feed
+        </title>
+    </head>
 <nav id="top" style="background-color: white; margin-top: 2px;">
     <ul>
 
@@ -44,4 +50,10 @@
 
     </fieldset>
     {% endblock %}
+    
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+
+    <script>
+        feather.replace();
+    </script>
 </body>
