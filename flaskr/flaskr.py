@@ -7,6 +7,8 @@ import os
 import feedparser
 import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
+from urllib.parse import urljoin
+from werkzeug.contrib.atom import AtomFeed
 
 BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
@@ -99,15 +101,25 @@ def login():
     return render_template('login.html', error=error, form=form)
 
 #feed
-@app.route('/feed', methods=['GET', 'POST'])
-def feed():
-    feed = feedparser.parse(BBC_FEED)
-    first_article = feed['entries'][0]
-    title = first_article.get("title")
-    time = first_article.get("published")
-    summary = first_article.get("summary")
-    return render_template('feed.php', summary=summary, time=time,
-                           first_article=first_article)
+def make_external(url):
+    return urljoin(request.url_root, url)
+
+
+@app.route('/recent.atom')
+def recent_feed():
+    feed = AtomFeed('Recent Articles',
+                    feed_url=request.url, url=request.url_root)
+    articles = Article.query.order_by(Article.pub_date.desc()) \
+                      .limit(15).all()
+    for article in articles:
+        feed.add(article.title, unicode(article.rendered_text),
+                 content_type='html',
+                 author=article.author.name,
+                 url=make_external(article.url),
+                 updated=article.last_update,
+                 published=article.published)
+    return feed.get_response()
+
 
 #popular posts
 @app.route('/popular_posts', methods=['GET', 'POST'])

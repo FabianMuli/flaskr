@@ -26,7 +26,10 @@
             </a>
         </li>
         <span style="margin-right:5%!important;">
-            <li><a href="{{url_for('feed')}}">Feed</a></li>
+            <li><a href="{{url_for('recent_feed')}}" 
+                        rel="alternate"
+                        title="Recent Changes" 
+                        type="application/atom+xml">Feed</a></li>
             <li><a href="#popularPosts">Popular Posts</a></li>
             <li><a href="about.html">Friends</a></li>
             <li><a href="contacts/contacts.html">Profile</a></li>
