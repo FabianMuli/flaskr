@@ -137,6 +137,14 @@ def friends():
         abort(401)
     render_template('friends.php', error=error)
 
+#contact_us
+@app.route('contacts', methods=['GET', 'POST'])
+def contacts():
+    error = None
+    if not session.get('logged_in'):
+        abort(401)
+    
+
 #logout
 @app.route('/logout')
 def logout():
