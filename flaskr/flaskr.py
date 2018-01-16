@@ -10,7 +10,6 @@ from flask import Flask, request, render_template, flash, session, g, redirect, 
 from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
 from .forms import LoginForm
-from .forms import LoginForm
 
 BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
