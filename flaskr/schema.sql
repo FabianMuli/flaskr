@@ -1,4 +1,4 @@
-drop table if exists entries;
+drop table if exists comments;
 create table comments(
     id integer primary key autoincrement,
     'title' text not null,
@@ -17,6 +17,6 @@ create table users(
 drop table if exists messages;
 create table messages(
     id integer primary key autoincrement,
-    'user' text foreign key not null,
+    'user' text not null,
     'message' varchar(100) not null
 );

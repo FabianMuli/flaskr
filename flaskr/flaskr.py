@@ -72,10 +72,10 @@ def add_entry():
     if not session.get('logged_in'):
         abort(401)
     db = get_db()
-    db.execute('insert into entries(title, text) values (?, ?)',
+    db.execute('insert into comments(title, text) values (?, ?)',
                [request.form['title'], request.form['text']])
     db.commit()
-    flash("New message was successfully send")
+    flash("New comment was successfully send")
     return redirect(url_for('show_entries'))
 
 #delete all entries
@@ -129,22 +129,6 @@ def popular_posts():
     if not session.logged_in():
         abort(401)
     render_template("popular_posts.php", error=error)
-
-#friends page
-@app.route('/friends', methods=['GET', 'POST'])
-def friends():
-    error = None
-    if not session.logged_in():
-        abort(401)
-    render_template('friends.php', error=error)
-
-#contact_us
-@app.route('/contacts', methods=['GET', 'POST'])
-def contacts():
-    error = None
-    if not session.get('logged_in'):
-        abort(401)
-    
 
 #logout
 @app.route('/logout')
