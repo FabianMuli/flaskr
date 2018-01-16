@@ -5,7 +5,7 @@ create table comments(
     'text' varchar(100) not null
 );
 
-drop table if exists users
+drop table if exists users;
 create table users(
     id integer primary key autoincrement,
     'name' text not null,
@@ -14,7 +14,7 @@ create table users(
     'phone' numeric not null
 );
 
-drop table if exists messages
+drop table if exists messages;
 create table messages(
     id integer primary key autoincrement,
     'user' text foreign key not null,

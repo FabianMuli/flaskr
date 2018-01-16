@@ -9,6 +9,7 @@ import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
 from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
+from .forms import LoginForm
 
 BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
@@ -61,7 +62,7 @@ def close_db(error):
 @app.route('/entries')
 def show_entries():
     db = get_db()
-    cur = db.execute('select title, text from entries order by id desc')
+    cur = db.execute('select title, text from comments order by id desc')
     entries = cur.fetchall()
     return render_template('show_entries.php', title="Home", entries=entries)
 
@@ -85,7 +86,7 @@ def delete():
         abort(401)
 
 #login
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     error = None
@@ -138,7 +139,7 @@ def friends():
     render_template('friends.php', error=error)
 
 #contact_us
-@app.route('contacts', methods=['GET', 'POST'])
+@app.route('/contacts', methods=['GET', 'POST'])
 def contacts():
     error = None
     if not session.get('logged_in'):
