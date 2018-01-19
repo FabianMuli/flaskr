@@ -85,6 +85,18 @@ def delete():
     if not session.get('logged_in'):
         abort(401)
 
+#signup
+@app.route('/signup', methods=['GET','POST'])
+def signup():
+    error= None
+    form = LoginForm()
+    if session.get('logged_in'):
+        abort(401)
+        flash("You are a user.")
+    elif session.get('logged_out'):
+        if request.method == 'POST':
+            
+
 #login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -120,7 +132,6 @@ def recent_feed():
                  updated=article.last_update,
                  published=article.published)
     return feed.get_response()
-
 
 #popular posts
 @app.route('/popular_posts', methods=['GET', 'POST'])
