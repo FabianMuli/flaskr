@@ -9,7 +9,7 @@ import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
 from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
-from .forms import LoginForm
+from .forms import LoginForm, SignupForm
 
 BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
@@ -85,19 +85,18 @@ def delete():
     if not session.get('logged_in'):
         abort(401)
 
-"""
 #signup
-@app.route('/signup', methods=['GET','POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    error= None
-    form = LoginForm()
+    error = None
+    form = SignupForm()
     if session.get('logged_in'):
         abort(401)
         flash("You are a user.")
     elif session.get('logged_out'):
         if request.method == 'POST':
-            
-"""
+            flash("Welcome new user")
+    return render_template('signup.php', error=error, form=form)
 
 #login
 @app.route('/login', methods=['GET', 'POST'])

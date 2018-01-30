@@ -75,7 +75,7 @@
                             <a href="#">delete</a>
                         </span>
                         -->
-                        
+
                         </fieldset>
                     </li>
 
@@ -83,7 +83,7 @@
                     <li>
 
                     <em>
-                        Start chatting to see messages here.
+                        All posts appear here.
                     </em> 
 
                     {% endfor %}

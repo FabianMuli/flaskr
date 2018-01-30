@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>
@@ -23,44 +23,36 @@
 
     {% extends "layout.html" %}
 
-    <body ng-app="form">
+    <body>
         {% block body%}
         <div>
-
-            <fieldset class="fieldset">
-
-                <legend>
-                    Sign up
-                </legend>
-
                  {% if error %}
                 <p class=error>{{ error }}</p>
                 {% endif %}
 
-                <form class="login_Form" autocomplete="on" method="post" name="signup_form" action="{{url_for('signup')}}">
-                    First name: <input style="margin-left: 5%;" type="text" name="first_name" id="first_name">
-                    <br />
-                    <br /> Second name: <input style="margin-left: 1%;" type="text" name="second_name" id="second_name">
-                    <br />
-                    <br /> Mobile No.: <input style="margin-left: 6%;" type="tel" name="mobile_no" id="mobile_no">
-                    <br />
-                    <br /> Email: <input style="margin-left: 20%;" type="email" name="email" id="email">
-                    <br />
-                    <br /> Password: <input style="margin-left: 10%;" type="password" name="passwd" id="passwd">
-                    <br />
-                    <br /> Confirm <input style="margin-left: 15%;" type="password" name="passwd2" id="passwd2">
+                <form method="post">
+                    {{ form.first_name() }}
                     <br />
                     <br />
-                    <input type="submit" value="Sign Up" class="submit_button">
-
-                </form> 
-               
-            </fieldset>
+                    {{ form.second_name() }}
+                    <br />
+                    <br />
+                    {{ form.email()}}
+                    <br />
+                    <br />
+                    {{ form.mobile_number() }}
+                    <br />
+                    <br />
+                    {{ form.password() }}
+                    <br />
+                    <br />
+                    {{ form.password2() }}
+                    <br />
+                    <br />
+                    {{ form.submit() }}
+                </form>
         </div>
         {% endblock %}
-                
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
-
     </body>
 </html>
 
