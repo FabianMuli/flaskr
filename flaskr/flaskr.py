@@ -85,6 +85,7 @@ def delete():
     if not session.get('logged_in'):
         abort(401)
 
+"""
 #signup
 @app.route('/signup', methods=['GET','POST'])
 def signup():
@@ -96,6 +97,7 @@ def signup():
     elif session.get('logged_out'):
         if request.method == 'POST':
             
+"""
 
 #login
 @app.route('/login', methods=['GET', 'POST'])

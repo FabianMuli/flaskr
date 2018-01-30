@@ -32,7 +32,10 @@
         <form action="{{ url_for('login') }}" method=post>
             <fieldset class="fieldset">
                 <legend>Log In</legend>
-
+        {% if error %}
+            <p class=error>
+                 <strong>Error:</strong> {{ error }}{% endif %}
+            </p>
                 <form class="signup_Form" autocomplete="off" name="login_form">
                     Name: <input style="margin-left:8%; width: 50%; height: 5%;" type="text" name="username" id="email" placeholder=" email@gmail.com">
                     <br />
@@ -44,9 +47,6 @@
                 </form>
                 <p>
                     Or <a class="signup" href='#'>Sign Up</a>
-                </p>
-                {% if error %}
-                <p class=error><strong>Error:</strong> {{ error }}{% endif %}
                 </p>
             </fieldset>
         </form>
