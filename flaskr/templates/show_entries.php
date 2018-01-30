@@ -68,8 +68,14 @@
                 
                     <li>
                         <fieldset class=entry_fieldset>
-                            <legend>{{entry.title}}</legend>
+                        <legend>{{entry.title | capitalize}} </legend>
                             <span>{{ entry.text }}</span>
+                            <!--delete the comment 
+                            <span class="delete_button">
+                            <a href="#">delete</a>
+                        </span>
+                        -->
+                        
                         </fieldset>
                     </li>
 
