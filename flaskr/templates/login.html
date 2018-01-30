@@ -8,8 +8,7 @@
 
         <meta name="author" content="Fabian Muema">
         <meta http-equiv="UTF-8">
-        <meta name="keywords" content="iphoenixus, login, signup">
-
+        <meta name="keywords" content="fabchat, login, signup">
     </head>
 
     {% extends "layout.html" %}
@@ -18,39 +17,44 @@
 
         <div id="container">
         
-        <form action="{{ url_for('login') }}" method=post>
+            <form action="{{ url_for('login') }}" method=post>
 
-            <fieldset class="fieldset">
+                <fieldset class="fieldset">
 
-    <ul>
-        <li id="company-name">
-            <h1 class="LoginH1">
-            FabChat
-            </h1>
-        </li>
-    </ul>
-        {% if error %}
-            <p class=error>
-                 <strong>Error:</strong> {{ error }}{% endif %}
-            </p>
-                <form class="signup_Form" autocomplete="off" name="login_form">
-                   <h2 class="LoginH2"> Log In </h2>
-                    <br />
-                    <input type="text" name="username" id="email" placeholder="username">
-                    <br />
-                    <br /><input type="password" name="password" id="password" placeholder="password">
-                    <br />
-                    <br />
-                    <input type="submit" value="Log In" class="submit_button login_button">
-                    <br />
-                </form>
-                <p>
-                    Or <a class="signup" href='#'>Sign Up</a>
-                </p>
-            </fieldset>
-        </form>
-</div>
+                    <ul>
+                        <li id="company-name">
+                            <h1 class="LoginH1">
+                            FabChat
+                            </h1>
+                        </li>
+                    </ul>
 
+                    <!-- Displays error if the username or password is wrong -->
+                    {% if error %}
+                        <p class=error>
+                            <strong>Error:</strong> {{ error }}{% endif %}
+                        </p>
+
+                    <form class="signup_Form" autocomplete="off" name="login_form">
+                    <h2> Log In </h2>
+                        <br />
+                        <input type="text" name="username" id="email" placeholder="username">
+                        <br />
+                        <br /><input type="password" name="password" id="password" placeholder="password">
+                        <br />
+                        <br />
+                        <input type="submit" value="Log In" class="submit_button login_button">
+                        <span class="signup">
+                              Or
+                            <a class="signup_button" href='#'> Sign Up </a>
+                        </span>
+                        <br />
+                        <br />
+                    </form>
+                    
+                </fieldset>
+            </form>
+        </div>
         {% endblock %}
     </body>
 

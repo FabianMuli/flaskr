@@ -42,10 +42,11 @@
 
     <body style="background-color: white;">
         {% extends "layout.html" %} {% block body %}
-        <div class=container>
+        <div class="container">
 
             <fieldset class="fieldset">
                 <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+                    <br />
                     Name: <input type='text' name='title' placeholder='name'>
                     <br />
                     <br />

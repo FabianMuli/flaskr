@@ -423,7 +423,9 @@ input:focus {
 .submit_button:hover {
     box-shadow: 1px 1px 1px 1px lightgray;
 }
-
+.signup {
+    text-align: center;
+}
 .top {
     background-color: lightgray;
     border: none;
