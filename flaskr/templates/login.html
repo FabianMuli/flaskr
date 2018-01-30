@@ -12,34 +12,33 @@
 
     </head>
 
-    <nav id="top" style="background-color: white;">
-        <ul>
-
-
-            <li id="company-name" style="text-align: center;">
-                <a href="#">FabChat
-                </a>
-            </li>
-
-        </ul>
-    </nav>
-
     {% extends "layout.html" %}
-
+{% block body %}
     <body>
 
-        {% block body %}
+        <div id="container">
+        
         <form action="{{ url_for('login') }}" method=post>
+
             <fieldset class="fieldset">
-                <legend>Log In</legend>
+
+    <ul>
+        <li id="company-name">
+            <h1 class="LoginH1">
+            FabChat
+            </h1>
+        </li>
+    </ul>
         {% if error %}
             <p class=error>
                  <strong>Error:</strong> {{ error }}{% endif %}
             </p>
                 <form class="signup_Form" autocomplete="off" name="login_form">
-                    Name: <input style="margin-left:8%; width: 50%; height: 5%;" type="text" name="username" id="email" placeholder=" email@gmail.com">
+                   <h2 class="LoginH2"> Log In </h2>
                     <br />
-                    <br /> Password: <input style="margin-left:2%; width: 50%; height: 5%;" type="password" name="password" id="password">
+                    <input type="text" name="username" id="email" placeholder="username">
+                    <br />
+                    <br /><input type="password" name="password" id="password" placeholder="password">
                     <br />
                     <br />
                     <input type="submit" value="Log In" class="submit_button login_button">
@@ -50,6 +49,7 @@
                 </p>
             </fieldset>
         </form>
+</div>
 
         {% endblock %}
     </body>
