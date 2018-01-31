@@ -1,8 +1,8 @@
 drop table if exists comments;
 create table comments(
     id integer primary key autoincrement,
-    'title' text not null,
-    'text' varchar(100) not null
+    'name' text not null,
+    'post' varchar(100) not null
 );
 
 drop table if exists users;

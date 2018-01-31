@@ -35,15 +35,17 @@
                             <strong>Error:</strong> {{ error }}{% endif %}
                         </p>
 
+                        {% from "_formhelpers.html" import render_field %}
                     <form class="signup_Form" autocomplete="off" name="login_form">
                     <h2> Log In </h2>
+                        {{ form.hidden_tag()}}
                         <br />
-                        <input type="text" name="username" id="email" placeholder="username">
+                        {{ render_field(form.username, placeholder="Username")}}
                         <br />
-                        <br /><input type="password" name="password" id="password" placeholder="password">
+                        {{ render_field(form.password, placeholder="password")}}
                         <br />
+                        {{ render_field(form.submit,class="submit_button")}}
                         <br />
-                        <input type="submit" value="Log In" class="submit_button login_button">
                         <span class="signup">
                               Or
                             <a class="signup_button" href="{{ url_for('signup') }}"> Sign Up </a>

@@ -46,16 +46,15 @@
         <div class="container">
 
             <fieldset class="fieldset">
+                {% from "_formhelpers.html" import render_field %}
                 <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
-                    <br />
-                    Name: <input type='text' name='title' placeholder='name'>
-                    <br />
-                    <br />
-                    Start Chat:<input style="width: 70%; height: 10%;" 
-                    type="text" name="text" id="password" placeholder="Type message" required>
+                    {{form.hidden_tag() }}
                     <br />
                     <br />
-                    <input type="submit" value="Post" class="submit_button">
+                    {{ render_field(form.post, placeholder="Post something to get claps.")}}
+                    <br />
+                    <br />
+                    {{ render_field(form.submit, class="submit_button")}}
                     <b />
                     <br />
                 </form>
@@ -65,12 +64,12 @@
 
             <fieldset class="fieldset">
                 <ul class=entries>
-                    {% for entry in entries %}
+                    {% for post in posts %}
                 
                     <li>
                         <fieldset class=entry_fieldset>
-                        <legend>{{entry.title | capitalize}} </legend>
-                            <span>{{ entry.text }}</span>
+                        <legend>{{post.name | capitalize}} </legend>
+                            <span>{{ post.post }}</span>
                             <!--delete the comment 
                             <span class="delete_button">
                             <a href="#">delete</a>

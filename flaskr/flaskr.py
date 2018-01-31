@@ -9,7 +9,7 @@ import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
 from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
-from .forms import LoginForm, SignupForm
+from .forms import LoginForm, SignupForm, PostForm
 
 BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
@@ -61,36 +61,45 @@ def close_db(error):
 #show entries
 @app.route('/entries')
 def show_entries():
+    form = PostForm(request.form)
     db = get_db()
-    cur = db.execute('select title, text from comments order by id desc')
-    entries = cur.fetchall()
-    return render_template('show_entries.php', title="Home", entries=entries)
+    cur = db.execute('select name, post from comments order by id desc')
+    posts = cur.fetchall()
+    return render_template('show_entries.php', title="Home", posts=posts, form=form)
 
 #add new entry
 @app.route('/add', methods=['POST'])
 def add_entry():
+    form = PostForm(request.form)
     if not session.get('logged_in'):
         abort(401)
     db = get_db()
-    db.execute('insert into comments(title, text) values (?, ?)',
-               [request.form['title'], request.form['text']])
-    db.commit()
-    flash("New comment was successfully send")
-    return redirect(url_for('show_entries'))
+    if form.validate():
+        post = form.post.data
+        name = app.config['USERNAME']
+        db.execute('''insert into comments(name, post) values(?, ?)''', (name, post))
+        db.commit()
+        flash("New comment was successfully send")
+        return redirect(url_for('show_entries'))
+    error = "An error occured"
+    db = get_db()
+    cur = db.execute('select name, post from comments order by id desc')
+    posts = cur.fetchall()
+    return render_template('show_entries.php', title="Home", posts=posts, form=form)
 
 #signup
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
     form = SignupForm(request.form)
     error = None
-    if request.method == 'POST':
+    if request.method == 'POST' and form.validate():
         if form.validate_on_submit():
             name = form.first_name.data + " " + form.second_name.data
             email = form.email.data
             password = str(form.password.data)
             db = get_db()
             db.execute('insert into users(name, password, email) values (?, ?, ?)',
-                        name, password, email)
+                        [name], [password], [email])
             db.commit()
             flash("You have successfully signed up!")
             session['logged_in'] = True
@@ -102,11 +111,14 @@ def signup():
 #login
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
+    form = LoginForm(request.form)
     error = None
-    if request.method == 'POST':
-        if request.form['username'] != app.config['USERNAME']:
+    if request.method == 'POST' and form.validate():
+        username = form.username.data
+        password = form.password.data
+        if username != app.config['USERNAME']:
             error = "Invalid username"
-        elif request.form['password'] != app.config['PASSWORD']:
+        elif password != app.config['PASSWORD']:
             error = 'Invalid password'
         else:
             session['logged_in'] = True

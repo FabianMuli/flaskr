@@ -3,6 +3,9 @@ from wtforms import StringField, BooleanField, SubmitField, IntegerField, Passwo
 from wtforms.validators import Required, Email, EqualTo
 
 class LoginForm(Form):
+    username = StringField(validators=[Required()])
+    password = PasswordField(validators=[Required()])
+    submit = SubmitField("Submit")
     remember_me = BooleanField('remember_me', default=True)
 
 class SignupForm(Form):
@@ -13,3 +16,7 @@ class SignupForm(Form):
     password = PasswordField('Password:', validators=[Required()])
     password2 = PasswordField('Confirm password', validators=[EqualTo('password'), Required()])
     submit = SubmitField('Submit')
+
+class PostForm(Form):
+    post = StringField("Whats on your mind:", validators=[Required()])
+    submit = SubmitField("Post")
