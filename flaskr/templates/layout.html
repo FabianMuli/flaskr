@@ -23,7 +23,8 @@
             {% for message in get_flashed_messages() %}
 
             <div class=flash>
-                {{message}}
+                {{message}} {% if name %} {{ name }}
+                {% endif %}
                 <br />
             </div>
             {% endfor %} {% block body %}{% endblock %}

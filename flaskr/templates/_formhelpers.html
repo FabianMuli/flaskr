@@ -3,7 +3,7 @@
     <dd >
         {{ field(**kwargs) | safe }}
     {% if field.errors %}
-    <ul class="errors" style="color: red; font-size: 0.8em;list-style: none;">
+    <ul class="errors" style="color: rgb(241, 100, 100); font-size: 0.8em;list-style: none;">
         {% for error in field.errors %}
         <li>{{error}}</li>
         {% endfor %}

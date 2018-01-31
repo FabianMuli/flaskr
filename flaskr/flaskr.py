@@ -4,14 +4,10 @@ The backend of the app
 
 #all imports
 import os
-import feedparser
 import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
 from urllib.parse import urljoin
-from werkzeug.contrib.atom import AtomFeed
 from .forms import LoginForm, SignupForm, PostForm
-
-BBC_FEED = "https://feeds.bbci.co.uk/news/rss.xml"
 #create the application instance
 app = Flask(__name__)
 
@@ -22,8 +18,6 @@ app.config.from_object(__name__)
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'flask.db'),
     SECRET_KEY='b\x1f\xe9Z\xf5\x9c\x1dK\x9d\x01h\xca\xa372\xf8\xd0y\x7f\x96W\xdf-\xfc\xf8',
-    USERNAME='admin',
-    PASSWORD='fabian'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -76,10 +70,10 @@ def add_entry():
     db = get_db()
     if form.validate():
         post = form.post.data
-        name = app.config['USERNAME']
+        name = session['name']
         db.execute('''insert into comments(name, post) values(?, ?)''', (name, post))
         db.commit()
-        flash("New comment was successfully send")
+        flash("New post was send")
         return redirect(url_for('show_posts'))
     error = "An error occured"
     db = get_db()
@@ -129,14 +123,30 @@ def login():
     form = LoginForm(request.form)
     error = None
     if request.method == 'POST' and form.validate():
-        username = form.username.data
+        email = form.email.data
         password = form.password.data
-        if username != app.config['USERNAME']:
-            error = "Invalid username"
-        elif password != app.config['PASSWORD']:
-            error = 'Invalid password'
+        db = get_db()
+        cur = db.execute('''select email from users where email = ?''', (email,))
+        emailExist = cur.fetchone()
+        cur = db.execute('''select password from users where password = ? and email = ?''', (password, email))
+        userExist = cur.fetchone()
+        if emailExist == None:
+            error = "The email does not exist."
+            session['logged_in'] = False
+            return render_template('login.html', error=error, form=form)
+        elif userExist == None:
+            error = "Invalid password."
+            session['logged_in'] = False
+            return render_template('login.html', error=error, form=form)
         else:
             session['logged_in'] = True
+            cur = db.execute('''select name from users where email = ?''', (email,))
+            for row in cur:
+                name = row[0]
+                session['name'] = name
+                break
+            else:
+                name = "user"
             flash('Successfully logged in')
             return redirect(url_for('show_posts'))
     return render_template('login.html', error=error, form=form)
@@ -147,10 +157,9 @@ def login():
 def Trending():
     return render_template('Trending.php')
 
-
 #profile page
 @app.route('/user/')
-def Profile(username):
+def Profile():
     return render_template('profile.php')
 
 @app.route('/friends')
@@ -169,6 +178,7 @@ def popular_posts():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
+    session.pop('name', None)
     flash('You logged out')
     return redirect(url_for('login'))
 

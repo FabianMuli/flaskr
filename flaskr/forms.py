@@ -3,7 +3,7 @@ from wtforms import StringField, BooleanField, SubmitField, IntegerField, Passwo
 from wtforms.validators import Required, Email, EqualTo
 
 class LoginForm(Form):
-    username = StringField(validators=[Required()])
+    email =StringField(validators=[Email(), Required()])
     password = PasswordField(validators=[Required()])
     submit = SubmitField("Submit")
     remember_me = BooleanField('remember_me', default=True)
