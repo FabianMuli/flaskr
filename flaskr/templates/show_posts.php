@@ -25,10 +25,10 @@
             </li>
 
             <span style="margin-right:5%!important;">
-                <li><a href="{{url_for('recent_feed')}}">Feed</a></li>
-                <li><a href="#popularPosts">Popular Posts</a></li>
-                <li><a href="about.html">Friends</a></li>
-                <li><a href="contacts/contacts.html">Profile</a></li>
+                <li><a href="{{url_for('show_posts')}}">Feed</a></li>
+                <li><a href="{{url_for('Trending')}}">Trending</a></li>
+                <li><a href="{{url_for('Friends')}}">Friends</a></li>
+                <li><a href="{{url_for('Profile')}}">Profile</a></li>
 
             
 

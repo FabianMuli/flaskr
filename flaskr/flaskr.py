@@ -60,12 +60,12 @@ def close_db(error):
 
 #show entries
 @app.route('/entries')
-def show_entries():
+def show_posts():
     form = PostForm(request.form)
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
-    return render_template('show_entries.php', title="Home", posts=posts, form=form)
+    return render_template('show_posts.php', title="Home", posts=posts, form=form)
 
 #add new entry
 @app.route('/add', methods=['POST'])
@@ -80,12 +80,12 @@ def add_entry():
         db.execute('''insert into comments(name, post) values(?, ?)''', (name, post))
         db.commit()
         flash("New comment was successfully send")
-        return redirect(url_for('show_entries'))
+        return redirect(url_for('show_posts'))
     error = "An error occured"
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
-    return render_template('show_entries.php', title="Home", posts=posts, form=form)
+    return render_template('show_posts.php', title="Home", posts=posts, form=form)
 
 #signup
 @app.route('/signup/', methods=['GET', 'POST'])
@@ -104,7 +104,7 @@ def signup():
             flash("You have successfully signed up!")
             session['logged_in'] = True
             session['name'] = name
-            return redirect(url_for('show_entries'))
+            return redirect(url_for('show_posts'))
         error = "An error occured"
     return render_template('signup.php', form=form, error=error)
 
@@ -123,36 +123,28 @@ def login():
         else:
             session['logged_in'] = True
             flash('Successfully logged in')
-            return redirect(url_for('show_entries'))
+            return redirect(url_for('show_posts'))
     return render_template('login.html', error=error, form=form)
 
-#feed
-def make_external(url):
-    return urljoin(request.url_root, url)
-
-
-@app.route('/recent.atom')
-def recent_feed():
-    feed = AtomFeed('Recent Articles',
-                    feed_url=request.url, url=request.url_root)
-    articles = Article.query.order_by(Article.pub_date.desc()) \
-                      .limit(15).all()
-    for article in articles:
-        feed.add(article.title, unicode(article.rendered_text),
-                 content_type='html',
-                 author=article.author.name,
-                 url=make_external(article.url),
-                 updated=article.last_update,
-                 published=article.published)
-    return feed.get_response()
+#trending
+@app.route('/Trending/', methods=['POST', 'GET'])
+def Trending():
+    
+    
+"""
+#profile page
+@app.route('/user/<username>')
+def user(username):
+    if get.session['logged_in]
+    """
 
 #popular posts
 @app.route('/popular_posts', methods=['GET', 'POST'])
 def popular_posts():
-    error = None
-    if not session.logged_in():
+    if session.get('logged_in'):
+        return render_template("popular_posts.php")
+    elif session.get('logged_out'):
         abort(401)
-    render_template("popular_posts.php", error=error)
 
 #logout
 @app.route('/logout')
