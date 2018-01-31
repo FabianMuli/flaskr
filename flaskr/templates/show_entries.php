@@ -42,6 +42,7 @@
 
     <body style="background-color: white;">
         {% extends "layout.html" %} {% block body %}
+
         <div class="container">
 
             <fieldset class="fieldset">

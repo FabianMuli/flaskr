@@ -73,11 +73,12 @@ h2 {
 .error {
     background: #f0d6d6;
     padding: 0.5em;
+    
 }
 
 .button {
-    width: 4em;
-    height: 2em;
+    width: 20em;
+    height: 7em;
 }
 
 .button:hover {
@@ -384,12 +385,14 @@ span.psw {
     }
 }
 
+.logo {
+    color: black;
+}
 .form {
     text-align: center;
-    width: 35%;
+    width: 70%;
     height: 30%;
     font-family: cursive;
-    margin-left: 35%;
 }
 
 .fieldset {
@@ -398,6 +401,16 @@ span.psw {
 }
 
 .fieldset:hover {
+    box-shadow: 3px 2px 2px 2px lightgray;
+}
+
+.signup_fieldset {
+    box-shadow: 2px 1px 1px 1px lightgray;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.signup_fieldset:hover {
     box-shadow: 3px 2px 2px 2px lightgray;
 }
 

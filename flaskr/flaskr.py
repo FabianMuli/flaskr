@@ -78,30 +78,30 @@ def add_entry():
     flash("New comment was successfully send")
     return redirect(url_for('show_entries'))
 
-#delete all entries
-@app.route('/', methods=['GET', 'POST'])
-def delete():
-    error = None
-    if not session.get('logged_in'):
-        abort(401)
-
 #signup
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup/', methods=['GET', 'POST'])
 def signup():
+    form = SignupForm(request.form)
     error = None
-    form = SignupForm()
-    if session.get('logged_in'):
-        abort(401)
-        flash("You are a user.")
-    elif session.get('logged_out'):
-        if request.method == 'POST':
-            flash("Welcome new user")
-    return render_template('signup.php', error=error, form=form)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            name = form.first_name.data + " " + form.second_name.data
+            email = form.email.data
+            password = str(form.password.data)
+            db = get_db()
+            db.execute('insert into users(name, password, email) values (?, ?, ?)',
+                        name, password, email)
+            db.commit()
+            flash("You have successfully signed up!")
+            session['logged_in'] = True
+            session['name'] = name
+            return redirect(url_for('show_entries'))
+        error = "An error occured"
+    return render_template('signup.php', form=form, error=error)
 
 #login
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
     error = None
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:

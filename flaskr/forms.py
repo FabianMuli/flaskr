@@ -11,5 +11,5 @@ class SignupForm(Form):
     email = StringField('Email:', validators=[Email(), Required()])
     mobile_number = IntegerField('Mobile number:', validators=[Required()])
     password = PasswordField('Password:', validators=[Required()])
-    password2 = PasswordField('Confirm password', validators=[EqualTo('passwd'), Required()])
+    password2 = PasswordField('Confirm password', validators=[EqualTo('password'), Required()])
     submit = SubmitField('Submit')

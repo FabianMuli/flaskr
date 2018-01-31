@@ -5,21 +5,7 @@
             Signup
         </title>
         
-        <link href="\static\signup.css" rel="stylesheet">
-
     </head>
-
-    <nav id="top" style="background-color: white;">
-        <ul>
-
-
-            <li id="company-name">
-                <a href="#">FabChat
-                </a>
-            </li>
-
-        </ul>
-    </nav>
 
     {% extends "layout.html" %}
 
@@ -30,26 +16,30 @@
                 <p class=error>{{ error }}</p>
                 {% endif %}
 
-                <form method="post">
-                    {{ form.first_name() }}
-                    <br />
-                    <br />
-                    {{ form.second_name() }}
-                    <br />
-                    <br />
-                    {{ form.email()}}
-                    <br />
-                    <br />
-                    {{ form.mobile_number() }}
-                    <br />
-                    <br />
-                    {{ form.password() }}
-                    <br />
-                    <br />
-                    {{ form.password2() }}
-                    <br />
-                    <br />
-                    {{ form.submit() }}
+                {% from "_formhelpers.html" import render_field %}
+                <form action='' method="post" class="form">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="signup_fieldset">
+                        <h1 class="logo">Fabchat</h1>
+                        <br />
+                        <h2>Sign up</h2>
+                        <br />
+                        <dl>
+                            {{ render_field(form.first_name, placeholder="first name")}}
+                            <br />
+                            {{ render_field(form.second_name, placeholder="second name")}}
+                            <br />
+                            {{ render_field(form.email, placeholder="example@gmail.com") }}
+                            <br />
+                            {{ render_field(form.mobile_number, placeholder="mobile number") }}
+                            <br />
+                            {{ render_field(form.password, placeholder="password")}}
+                            <br />
+                            {{ render_field(form.password2, placeholder="confirm password")}}
+                            <br />
+                        </dl>
+                        <p><input type="submit" value="sign up" class="submit_button"></p>
+                    </fieldset>
                 </form>
         </div>
         {% endblock %}
