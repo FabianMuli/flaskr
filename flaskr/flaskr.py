@@ -93,19 +93,34 @@ def signup():
     form = SignupForm(request.form)
     error = None
     if request.method == 'POST' and form.validate():
-        if form.validate_on_submit():
-            name = form.first_name.data + " " + form.second_name.data
-            email = form.email.data
-            password = str(form.password.data)
-            db = get_db()
-            db.execute('insert into users(name, password, email) values (?, ?, ?)',
-                        [name], [password], [email])
+        name = form.first_name.data + " " + form.second_name.data
+        email = form.email.data
+        phone = form.mobile_number.data
+        password = str(form.password.data)
+        db = get_db()
+        cur = db.execute('''select name from users where name = ?''', (name,))
+        sameName = cur.fetchone()
+        cur = db.execute('''select email from users where email = ?''', (email,))
+        sameEmail = cur.fetchone()
+        cur = db.execute('''select phone from users where phone = ?''', (phone,))
+        samePhone = cur.fetchone()
+        if sameName != None:
+            flash("The username is already taken, pick another!")
+            return redirect(url_for('signup'))
+        elif sameEmail != None:
+            flash("This email is already taken! Choose another.")
+            return redirect(url_for('signup'))
+        elif samePhone != None:
+            flash("This mobile number is already taken! Choose another.")
+            return redirect(url_for('signup'))
+        else:
+            db.execute('''insert into users(name, password, email, phone) values (?, ?, ?, ?)''',
+                       (name, password, email, phone))
             db.commit()
             flash("You have successfully signed up!")
             session['logged_in'] = True
             session['name'] = name
             return redirect(url_for('show_posts'))
-        error = "An error occured"
     return render_template('signup.php', form=form, error=error)
 
 #login
@@ -126,17 +141,21 @@ def login():
             return redirect(url_for('show_posts'))
     return render_template('login.html', error=error, form=form)
 
+
 #trending
 @app.route('/Trending/', methods=['POST', 'GET'])
 def Trending():
-    
-    
-"""
+    return render_template('Trending.php')
+
+
 #profile page
-@app.route('/user/<username>')
-def user(username):
-    if get.session['logged_in]
-    """
+@app.route('/user/')
+def Profile(username):
+    return render_template('profile.php')
+
+@app.route('/friends')
+def Friends():
+    return render_template('friends.php')
 
 #popular posts
 @app.route('/popular_posts', methods=['GET', 'POST'])

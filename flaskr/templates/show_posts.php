@@ -29,9 +29,6 @@
                 <li><a href="{{url_for('Trending')}}">Trending</a></li>
                 <li><a href="{{url_for('Friends')}}">Friends</a></li>
                 <li><a href="{{url_for('Profile')}}">Profile</a></li>
-
-            
-
                 <a class="hover" href="{{url_for('logout')}}">
                     Signout
                 </a>
@@ -95,8 +92,6 @@
                         Top
                     </button>
                 </a>
-            
-
             </fieldset>
         </div>
         {% endblock %}
