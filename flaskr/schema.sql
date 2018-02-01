@@ -12,14 +12,9 @@ create table users(
     'name' text not null,
     'email' text not null,
     'password' text not null,
-    'phone' integer not null
-);
-
-drop table if exists friends;
-create table friends(
-    id integer primary key autoincrement,
-    'name' text not null, 
-    'closeFriends' boolean
+    'phone' integer not null,
+    'followers' text,
+    'following' text,
 );
 
 drop table if exists profile;
@@ -29,9 +24,9 @@ create table profile(
     'email' text not null,
     'phone' integer not null,
     'about' text not null,
-    'friends' text not null,
+    'followers' text not null,
     'posts' text not null
-)
+);
 
 drop table if exists messages;
 create table messages(

@@ -1,44 +1,9 @@
 {% if session.logged_in %}
 <!DOCTYPE html>
 <html lang="en-us">
-
-    <nav id="top" style="background-color: white;">
-        <ul>
-
-            <li>
-
-                <div id="mySidenav" class="sidenav" style="color:white;">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="about.html">Profile</a>
-                    <a href="contacts/contacts.html">Friends</a>
-                </div>
-
-                <div id="main" style="text-align:right;">
-                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-                </div>
-
-            </li>
-
-            <li id="company-name">
-                <a href="#">FabChat
-                </a>
-            </li>
-
-            <span style="margin-right:5%!important;">
-                <li><a href="{{url_for('show_posts')}}">Feed</a></li>
-                <li><a href="{{url_for('Trending')}}">Trending</a></li>
-                <li><a href="{{url_for('Followers')}}">Followers</a></li>
-                <li><a href="{{url_for('Profile')}}">Profile</a></li>
-                <a class="hover" href="{{url_for('logout')}}">
-                    Signout
-                </a>
-
-            </span>
-        </ul>
-    </nav>
-
-    <body style="background-color: white;">
-        {% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %} 
+    <body>
+        {% block body %}
 
         <div class="container">
 
@@ -48,7 +13,8 @@
                     {{form.hidden_tag() }}
                     <br />
                     <br />
-                    {{ render_field(form.post, placeholder="Post something to get claps.")}}
+                    {{ render_field(form.post, placeholder="Post something to get claps.", class=
+                        "postField")}}
                     <br />
                     <br />
                     {{ render_field(form.submit, class="submit_button")}}
@@ -65,7 +31,7 @@
                 
                     <li>
                         <fieldset class=entry_fieldset>
-                        <legend>{{post.name | capitalize}} </legend>
+                        <legend><a href="#">{{post.name | capitalize}}</a></legend>
                             <span>{{ post.post }}</span>
                             <!--delete the comment 
                             <span class="delete_button">

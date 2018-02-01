@@ -128,7 +128,8 @@ def login():
         db = get_db()
         cur = db.execute('''select email from users where email = ?''', (email,))
         emailExist = cur.fetchone()
-        cur = db.execute('''select password from users where password = ? and email = ?''', (password, email))
+        cur = db.execute('''select password from users where password = ? and email = ?''',
+                         (password, email))
         userExist = cur.fetchone()
         if emailExist == None:
             error = "The email does not exist."
@@ -160,11 +161,33 @@ def Trending():
 #profile page
 @app.route('/user/')
 def Profile():
-    return render_template('profile.php')
+    name = session.get('name')
+    return render_template('profile.php', name=name)
 
 @app.route('/followers')
 def Followers():
-    return render_template('followers.php')
+    db = get_db()
+    cur = db.execute('''select name from followers order by id asc''')
+    followers = cur.fetchall()
+    return render_template('followers.php', followers=followers)
+
+#adding followers
+@app.route('/addFollowers')
+def addFollowers():
+    db = get_db()
+    follower = "Fabian muema"
+    db.execute('''insert into followers(name) values (?)''', (follower,))
+    db.commit()
+    return redirect(url_for('Followers'))
+
+#when a user clicks the unfollow button
+@app.route('/remove')
+def removeFollowers():
+    db = get_db()
+    follower = "Fabian muema"
+    db.execute('''delete from followers where name = ?''', (follower,))
+    db.commit()
+    return redirect(url_for('Followers'))
 
 #popular posts
 @app.route('/popular_posts', methods=['GET', 'POST'])

@@ -20,14 +20,23 @@ h2 {
 }
 
 a {
-    text-decoration: none!important;
+    text-decoration: none;
     color: black;
     font-family: cursive;
     font-size: 1.2em;
 }
 
 a:hover {
-    color: lightblue;
+    color: rgb(57, 188, 231);
+    text-decoration: underline;
+}
+
+a:visited {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
 }
 
 h1 {
