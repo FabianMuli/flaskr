@@ -27,7 +27,7 @@
             <span style="margin-right:5%!important;">
                 <li><a href="{{url_for('show_posts')}}">Feed</a></li>
                 <li><a href="{{url_for('Trending')}}">Trending</a></li>
-                <li><a href="{{url_for('Friends')}}">Friends</a></li>
+                <li><a href="{{url_for('Followers')}}">Followers</a></li>
                 <li><a href="{{url_for('Profile')}}">Profile</a></li>
                 <a class="hover" href="{{url_for('logout')}}">
                     Signout
