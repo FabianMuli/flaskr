@@ -162,9 +162,9 @@ def Trending():
 def Profile():
     return render_template('profile.php')
 
-@app.route('/friends')
-def Friends():
-    return render_template('friends.php')
+@app.route('/followers')
+def Followers():
+    return render_template('followers.php')
 
 #popular posts
 @app.route('/popular_posts', methods=['GET', 'POST'])
