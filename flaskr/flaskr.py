@@ -7,7 +7,7 @@ import os
 import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
 from urllib.parse import urljoin
-from .forms import LoginForm, SignupForm, PostForm
+from .forms import LoginForm, SignupForm, PostForm, UploadPhoto
 #create the application instance
 app = Flask(__name__)
 
@@ -56,6 +56,7 @@ def close_db(error):
 @app.route('/entries')
 def show_posts():
     form = PostForm(request.form)
+    name = session.get('name')
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
@@ -80,6 +81,11 @@ def add_entry():
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
     return render_template('show_posts.php', title="Home", posts=posts, form=form)
+
+#upload profile photo
+@app.route('/addpic', methods=['GET','POST'])
+def profilePhoto():
+    return redirect(url_for('Profile'))
 
 #signup
 @app.route('/signup/', methods=['GET', 'POST'])
@@ -148,21 +154,30 @@ def login():
                 break
             else:
                 name = "user"
-            flash('Successfully logged in')
-            return redirect(url_for('show_posts'))
+            name = session.get('name')
+            welcome = "Welcome back, " + name
+            flash(welcome)
+            return redirect(request.args.get('next') or url_for('show_posts'))
     return render_template('login.html', error=error, form=form)
 
 
 #trending
-@app.route('/Trending/', methods=['POST', 'GET'])
+@app.route('/Trending', methods=['POST', 'GET'])
 def Trending():
     return render_template('Trending.php')
 
 #profile page
-@app.route('/user/')
+@app.route('/user', methods=['GET','POST'])
 def Profile():
     name = session.get('name')
-    return render_template('profile.php', name=name)
+    form = UploadPhoto(request.form)
+    picture = form.picture.data
+    form.picture.data = ''
+    db = get_db()
+    if form.validate():
+        db.execute('''insert into profile(name,profilePhoto) values (?,?)''', (name, picture))
+        flash("Profile photo uploaded successfully")
+    return render_template('profile.php', name=name, form=form)
 
 @app.route('/followers')
 def Followers():
@@ -216,3 +231,4 @@ def method_not_allowed(error):
     error = None
     error = "Oops try that again"
     return render_template('method_not_allowed.html', error=error), 405
+
