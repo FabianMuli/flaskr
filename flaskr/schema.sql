@@ -12,20 +12,25 @@ create table users(
     'name' text not null,
     'email' text not null,
     'password' text not null,
-    'phone' integer not null,
-    'followers' text,
-    'following' text,
+    'phone' integer not null
+);
+
+drop table if exists followers;
+create table followers(
+    id integer primary key autoincrement,
+    'name' text not null,
+    'follower' text,
+    'following' text
 );
 
 drop table if exists profile;
 create table profile(
     id integer primary key autoincrement,
     'name' text not null,
-    'email' text not null,
-    'phone' integer not null,
-    'about' text not null,
-    'followers' text not null,
-    'posts' text not null
+    'email' text,
+    'phone' integer,
+    'about' text,
+    'profilePhoto' image
 );
 
 drop table if exists messages;

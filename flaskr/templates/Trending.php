@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,11 @@
 
 {% extends 'layout.html' %}
 {% block body %}
+{% if session.logged_in %}
 <body>
     
 </body>
+{% endif %}
 {% endblock %}
+
 </html>

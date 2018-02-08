@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+    <head>
 
-</head>
+    </head>
 
-{% extends 'layout.html' %}
-{% block body %}
-<body>
-    <style>
+        {% extends 'layout.html' %}
+        {% from "_formhelpers.html" import render_field %}
+        {% block body %}
+    <body>
+        <h1>
+            {{ name }}
+        </h1>
 
-    </style>
+        <fieldset class="fieldset">
+        <form>
+            {{ form.hidden_tag()}}
+            <p>{{render_field(form.picture.label)}} {{ render_field(form.picture, placeholder="Upload a profile picture.", 
+                class="uploadPhoto") }}</p>
+            <p>{{ render_field(form.upload, class="submit_button")}}</p>
 
-    <h1>
-        {{ name }}
-    </h1>
+        </form>
+        <fieldset>
+        <h3>Followers</h3>
 
-    <h3>Followers</h3>
-
-    <p>
-        <img href="fabian.jpeg">
-    </p>
-    {% endblock %}
+        <p>
+            
+        </p>
+        </fieldset>
+        
+        {% endblock %}
+        </body>

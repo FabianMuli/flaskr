@@ -8,6 +8,7 @@
 </head>
 
 {% extends 'show_posts.php' %}
+
 {% block body %}
 <body>
     <fieldset class="fieldset">

@@ -16,6 +16,8 @@
 
     </head>
 
+         {% if session.logged_in %}
+
     <nav id="top" style="background-color: white;">
         <ul>
     
@@ -57,6 +59,7 @@
             </span>
         </ul>
     </nav>
+    {% endif %}
 
     <body>
         <div class=page>
