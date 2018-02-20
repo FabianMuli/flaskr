@@ -43,12 +43,13 @@
                         </p>
                         {{ render_field(form.password, placeholder="password")}}
                         <p>
-                        {{ render_field(form.submit,class="submit_button")}}
+                        {{ render_field(form.submit,class="submit_button")}} <span class="signup">
+                            Or<a class="signup_button" href="{{ url_for('signup') }}"> Sign Up </a>
+                            </span>
+                            
                         </p>
-                        <span class="signup">
-                              Or
-                            <a class="signup_button" href="{{ url_for('signup') }}"> Sign Up </a>
-                        </span>
+                        <p><a href="{{url_for('change_password')}}">Forgot password</a></p>
+                        
                         <br />
                         <br />
                     </form>
