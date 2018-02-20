@@ -7,7 +7,7 @@ import os
 import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
 from urllib.parse import urljoin
-from .forms import LoginForm, SignupForm, PostForm, UploadPhoto
+from .forms import LoginForm, SignupForm, PostForm, UploadPhoto, ChangePasswordForm
 #create the application instance
 app = Flask(__name__)
 
@@ -185,6 +185,13 @@ def Followers():
     cur = db.execute('''select name from followers order by id asc''')
     followers = cur.fetchall()
     return render_template('followers.php', followers=followers)
+
+@app.route('/change_password', methods=['POST','GET'])
+def change_password():
+    form = ChangePasswordForm
+    db = get_db()
+    return render_template('change_password.html', form=form)
+
 
 #adding followers
 @app.route('/addFollowers')
