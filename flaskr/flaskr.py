@@ -1,7 +1,7 @@
 """
 The backend of the app
 """
-po
+
 #all imports
 import os
 import sqlite3
