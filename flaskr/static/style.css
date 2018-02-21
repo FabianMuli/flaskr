@@ -1,7 +1,3 @@
-.fieldset {
-    width: 70%!important;
-}
-
 body,
 html {
     font-family: cursive;
@@ -41,6 +37,10 @@ h1 {
 
 h2 {
     font-size: 1.2em;
+}
+
+.fieldset {
+    width: 70%!important;
 }
 
 .page {
@@ -463,7 +463,6 @@ footer {
     margin-left: 28%;
     border-radius: 17px;
 }
-
 
 
 /*reset password page styling */

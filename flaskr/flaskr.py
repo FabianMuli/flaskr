@@ -121,7 +121,7 @@ def signup():
             session['logged_in'] = True
             session['name'] = name
             return redirect(url_for('show_posts'))
-    return render_template('signup.php', form=form, error=error)
+    return render_template('signup.html', form=form, error=error)
 
 #login
 @app.route('/login/', methods=['GET', 'POST'])
@@ -164,7 +164,7 @@ def login():
 #trending
 @app.route('/Trending', methods=['POST', 'GET'])
 def Trending():
-    return render_template('Trending.php')
+    return render_template('Trending.html')
 
 #profile page
 @app.route('/user', methods=['GET','POST'])
@@ -177,14 +177,14 @@ def Profile():
     if form.validate():
         db.execute('''insert into profile(name,profilePhoto) values (?,?)''', (name, picture))
         flash("Profile photo uploaded successfully")
-    return render_template('profile.php', name=name, form=form)
+    return render_template('profile.html', name=name, form=form)
 
 @app.route('/followers')
 def Followers():
     db = get_db()
     cur = db.execute('''select name from followers order by id asc''')
     followers = cur.fetchall()
-    return render_template('followers.php', followers=followers)
+    return render_template('followers.html', followers=followers)
 
 @app.route('/change_password', methods=['POST','GET'])
 def change_password():
@@ -222,7 +222,7 @@ def removeFollowers():
 @app.route('/popular_posts', methods=['GET', 'POST'])
 def popular_posts():
     if session.get('logged_in'):
-        return render_template("popular_posts.php")
+        return render_template("popular_posts.html")
     elif session.get('logged_out'):
         abort(401)
 
