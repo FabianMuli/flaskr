@@ -1,7 +1,7 @@
 """
 The backend of the app
 """
-
+po
 #all imports
 import os
 import sqlite3
@@ -22,7 +22,7 @@ app.config.update(dict(
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 def connect_db():
-    #connects to the specific datbase
+    #connects to the specific database
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
     return rv
@@ -60,7 +60,7 @@ def show_posts():
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
-    return render_template('show_posts.php', title="Home", posts=posts, form=form)
+    return render_template('show_posts.html', title="Home", posts=posts, form=form)
 
 #add new entry
 @app.route('/add', methods=['POST'])
@@ -80,7 +80,7 @@ def add_entry():
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
-    return render_template('show_posts.php', title="Home", posts=posts, form=form)
+    return render_template('show_posts.html', title="Home", posts=posts, form=form)
 
 #upload profile photo
 @app.route('/addpic', methods=['GET','POST'])
@@ -188,10 +188,17 @@ def Followers():
 
 @app.route('/change_password', methods=['POST','GET'])
 def change_password():
-    form = ChangePasswordForm
-    db = get_db()
-    return render_template('change_password.html', form=form)
-
+    form = ChangePasswordForm(request.form)
+    error = None
+    if request.method == 'POST' and form.validate():
+        email = form.email.data
+        db = get_db()
+        cur = db.execute('''select name from users where email = ?''', (email,))
+        emailExist = cur.fetchone()
+        if emailExist == None:
+            error = "Email address not found."
+            return render_template('change_password.html', form=form, error=error)
+    return render_template('change_password.html', form=form, error=error)
 
 #adding followers
 @app.route('/addFollowers')

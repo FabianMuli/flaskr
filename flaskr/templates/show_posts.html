@@ -13,11 +13,12 @@
                     {{form.hidden_tag() }}
                     <br />
                     <br />
-                    {{ render_field(form.post, placeholder="Post something to get claps.", class=
-                        "postField")}}
+                    {{ render_field(form.post, placeholder="Post something to get claps.", autocomplete="off",
+                    autocapitalize="on", autocorrect="on", class='email change-password-email'
+                        )}}
                     <br />
                     <br />
-                    {{ render_field(form.submit, class="submit_button")}}
+                    {{ render_field(form.submit, class="submit-button")}}
                     <b />
                     <br />
                 </form>

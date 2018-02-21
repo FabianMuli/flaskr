@@ -78,7 +78,6 @@ h2 {
 .error {
     background: #f0d6d6;
     padding: 0.5em;
-    
 }
 
 .button {
@@ -284,6 +283,7 @@ span.psw {
     letter-spacing: 10px;
     list-style: none;
 }
+
 .LoginH1 {
     color: black;
     text-align: center;
@@ -381,18 +381,10 @@ span.psw {
     left: 0px;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
-}
-
 .logo {
     color: black;
 }
+
 .form {
     text-align: center;
     width: 70%;
@@ -429,7 +421,6 @@ input:focus {
     outline: none;
 }
 
-
 .submit_button {
     border: none;
     width: 80px;
@@ -443,9 +434,11 @@ input:focus {
 .submit_button:hover {
     box-shadow: 1px 1px 1px 1px lightgray;
 }
+
 .signup {
     text-align: center;
 }
+
 .top {
     background-color: lightgray;
     border: none;
@@ -469,4 +462,313 @@ footer {
 .g-signin2 {
     margin-left: 28%;
     border-radius: 17px;
+}
+
+
+
+/*reset password page styling */
+
+.change-password-body {
+    background-color: rgb(94, 94, 202)!important;
+    margin: 0;
+    margin-top: 0;
+    border-radius: 20px;
+}
+
+.change-password-form {
+    padding: 60px;
+    padding-top: 10px;
+}
+
+.change-password-div {
+    border: none;
+    text-align: center;
+}
+
+.reset-password {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    padding-bottom: 50px;
+    text-decoration: underline;
+}
+
+.password-body {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5%;
+    border: solid #ffffff 2px;
+    border-radius: 20px;
+}
+
+.change-password-header-div {
+    background-color: rgb(94, 94, 202)!important;
+}
+
+.submit-button {
+    border: solid 1px rgb(114, 114, 219);
+    width: 105pt;
+    height: 25pt;
+    border-radius: 20px;
+    font-size: 0.9em;
+    background-color: rgb(255, 255, 255);
+    transition: width 1s, box-shadow 0.1s;
+    outline: none;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    box-shadow: 0.3px 0.4px 0.4px 0.4px rgb(114, 114, 219);
+    width: 120pt;
+}
+
+.submit-button:active {
+    box-shadow: 2px 2px 2px 2px rgb(114, 114, 219);
+}
+
+.center-align {
+    text-align: center;
+    margin-top: 20%;
+}
+
+form h1.forgot {
+    padding-bottom: 20px;
+}
+
+.change-password-email {
+    width: 90%;
+    padding: 3%;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+
+/*change password foooter */
+
+.change-password-footer {
+    background-color: rgb(114, 114, 219);
+}
+
+
+/*desihning loader */
+
+.loader-container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#loading {
+    background-color: white;
+}
+
+.item {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.item-1 {
+    background-color: #FA5667;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-animation: item-1_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+    animation: item-1_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-2 {
+    background-color: #7A45E5;
+    top: 0;
+    right: 0;
+    -webkit-animation: item-2_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+    animation: item-2_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-3 {
+    background-color: #1B91F7;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    -webkit-animation: item-3_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+    animation: item-3_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-4 {
+    background-color: #FAC24C;
+    bottom: 0;
+    left: 0;
+    -webkit-animation: item-4_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+    animation: item-4_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+@-webkit-keyframes item-1_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(0, 100px);
+        transform: translate(0, 100px)
+    }
+    50% {
+        -webkit-transform: translate(100px, 100px);
+        transform: translate(100px, 100px)
+    }
+    75% {
+        -webkit-transform: translate(100px, 0);
+        transform: translate(100px, 0)
+    }
+}
+
+@keyframes item-1_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(0, 100px);
+        transform: translate(0, 100px)
+    }
+    50% {
+        -webkit-transform: translate(100px, 100px);
+        transform: translate(100px, 100px)
+    }
+    75% {
+        -webkit-transform: translate(100px, 0);
+        transform: translate(100px, 0)
+    }
+}
+
+@-webkit-keyframes item-2_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(-100px, 0);
+        transform: translate(-100px, 0)
+    }
+    50% {
+        -webkit-transform: translate(-100px, 100px);
+        transform: translate(-100px, 100px)
+    }
+    75% {
+        -webkit-transform: translate(0, 100px);
+        transform: translate(0, 100px)
+    }
+}
+
+@keyframes item-2_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(-100px, 0);
+        transform: translate(-100px, 0)
+    }
+    50% {
+        -webkit-transform: translate(-100px, 100px);
+        transform: translate(-100px, 100px)
+    }
+    75% {
+        -webkit-transform: translate(0, 100px);
+        transform: translate(0, 100px)
+    }
+}
+
+@-webkit-keyframes item-3_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(0, -100px);
+        transform: translate(0, -100px)
+    }
+    50% {
+        -webkit-transform: translate(-100px, -100px);
+        transform: translate(-100px, -100px)
+    }
+    75% {
+        -webkit-transform: translate(-100px, 0);
+        transform: translate(-100px, 0)
+    }
+}
+
+@keyframes item-3_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(0, -100px);
+        transform: translate(0, -100px)
+    }
+    50% {
+        -webkit-transform: translate(-100px, -100px);
+        transform: translate(-100px, -100px)
+    }
+    75% {
+        -webkit-transform: translate(-100px, 0);
+        transform: translate(-100px, 0)
+    }
+}
+
+@-webkit-keyframes item-4_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(100px, 0);
+        transform: translate(100px, 0)
+    }
+    50% {
+        -webkit-transform: translate(100px, -100px);
+        transform: translate(100px, -100px)
+    }
+    75% {
+        -webkit-transform: translate(0, -100px);
+        transform: translate(0, -100px)
+    }
+}
+
+@keyframes item-4_move {
+    0%,
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
+    25% {
+        -webkit-transform: translate(100px, 0);
+        transform: translate(100px, 0)
+    }
+    50% {
+        -webkit-transform: translate(100px, -100px);
+        transform: translate(100px, -100px)
+    }
+    75% {
+        -webkit-transform: translate(0, -100px);
+        transform: translate(0, -100px)
+    }
+}
+
+.email {
+    text-align: left;
+    border-width: 1px;
+    border-radius: 10px;
 }

@@ -18,7 +18,7 @@
 
          {% if session.logged_in %}
 
-    <nav id="top" style="background-color: white;">
+    <nav id="top loading" style="background-color: white;">
         <ul>
     
             <li>
@@ -61,9 +61,22 @@
     </nav>
     {% endif %}
 
-    <body>
-        <div class=page>
 
+    <body onload="myFunction()" id="body">
+        
+        <!--
+            <div class="loader-container">
+                <div id="loader-container">
+                    <div class="item item-1 loading"></div>
+                    <div class="item item-2 loading"></div>
+                    <div class="item item-3 loading"></div>
+                    <div class="item item-4 loading"></div>
+                </div>
+            </div>
+        -->
+
+<div class=page>
+    <body id="loading">
 
             {% for message in get_flashed_messages() %}
 
@@ -101,10 +114,24 @@
             crossorigin="anonymous"></script>
         <script src="https: //cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/af.js">
         </script>
+        <script>
+            var myVar;
+
+            function myFunction() {
+                document.getElementById("loading").style.display = "none";
+                myVar = setTimeout(showPage, 3000);
+            }
+
+            function showPage() {
+                document.getElementById("loader-container").style.display = "none";
+                document.getElementById("loading").style.display = "block";
+            }
+        </script>
+
     </body>
 
     {% if session.logged_in %}
-    <footer style="background-color: white;">
+    <footer style="background-color: white;" id="loading">
         <!--
         <div id="icons" class="fixed-bar">
             Follow Us:
