@@ -376,23 +376,13 @@ span.psw {
     box-shadow: 3px 2px 2px 2px lightgray;
 }
 
-.signup_fieldset {
-    box-shadow: 2px 1px 1px 1px lightgray;
-    border-radius: 10px;
-    width: 100%;
-}
-
-.signup_fieldset:hover {
-    box-shadow: 3px 2px 2px 2px lightgray;
-}
-
 .submit_button {
-    border: none;
-    width: 80px;
-    height: 30px;
-    background-color: #3B5998;
+    border: solid 2px lightblue;
+    width: 100px;
+    padding: 7px;
+    background-color: transparent;
     border-radius: 10px;
-    color: white;
+    color: rgb(170, 169, 169);
     cursor: pointer;
 }
 
@@ -785,6 +775,13 @@ div.grey-h1 {
     box-shadow: 1px 1px 1px 1px rgb(240, 240, 240);
 }
 
+::placeholder {
+    color: rgb(182, 182, 182);
+    font-size: 1.05em;
+    letter-spacing: 1px;
+    font-style: oblique;
+}
+
 div.grey-dv {
     background-color: rgb(240, 240, 240);
     padding: 30px;
@@ -834,9 +831,26 @@ div.grey-dv {
     font-style: oblique;
 }
 
+
 /*signup page*/
 
-.signup-page {
-    background-color: rgb(230, 229, 229);
+.signup-body {
+    background-color: rgb(245, 245, 245);
+}
 
+.signup_fieldset {
+    width: 40%;
+    border: solid 2px white ;
+    margin-left: 500px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.sign-up-h2 {
+    text-decoration: underline;
+    letter-spacing: 2px;
+}
+
+h1.logo {
+    letter-spacing: 2px;
 }

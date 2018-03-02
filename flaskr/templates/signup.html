@@ -21,20 +21,20 @@
                     <fieldset class="signup_fieldset">
                         <h1 class="logo">Fabchat</h1>
                         <br />
-                        <h2>Sign up</h2>
+                        <h2 class="sign-up-h2">Sign up</h2>
                         <br />
                         <dl>
-                            {{ render_field(form.first_name, placeholder="first name")}}
+                            {{ render_field(form.first_name, placeholder="first name", class="login-input")}}
                             <br />
-                            {{ render_field(form.second_name, placeholder="second name")}}
+                            {{ render_field(form.second_name, placeholder="second name", class="login-input")}}
                             <br />
-                            {{ render_field(form.email, placeholder="example@gmail.com") }}
+                            {{ render_field(form.email, placeholder="example@gmail.com", class="login-input") }}
                             <br />
-                            {{ render_field(form.mobile_number, placeholder="mobile number") }}
+                            {{ render_field(form.mobile_number, placeholder="mobile number", class="login-input") }}
                             <br />
-                            {{ render_field(form.password, placeholder="password")}}
+                            {{ render_field(form.password, placeholder="password",class="login-input")}}
                             <br />
-                            {{ render_field(form.password2, placeholder="confirm password")}}
+                            {{ render_field(form.password2, placeholder="confirm password", class="login-input")}}
                             <br />
                         </dl>
                         <p><input type="submit" value="sign up" class="submit_button"></p>
