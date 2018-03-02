@@ -16,10 +16,14 @@
                 {% endif %}
 
                 {% from "_formhelpers.html" import render_field %}
-                <form action='' method="post" class="form">
-                    {{ form.hidden_tag() }}
+
                     <fieldset class="signup_fieldset">
+                        <form action='' method="post" class="form">
+                            {{ form.hidden_tag() }}
+                            <div class="sign-up-grey-div">
                         <h1 class="logo">Fabchat</h1>
+                        <br />
+                        </div>
                         <br />
                         <h2 class="sign-up-h2">Sign up</h2>
                         <br />
@@ -38,8 +42,9 @@
                             <br />
                         </dl>
                         <p><input type="submit" value="sign up" class="submit_button"></p>
+                        </form>
                     </fieldset>
-                </form>
+                
         </div>
         {% endblock %}
     </body>

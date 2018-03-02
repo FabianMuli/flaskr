@@ -138,11 +138,11 @@ def login():
                          (password, email))
         userExist = cur.fetchone()
         if emailExist == None:
-            error = "The email does not exist."
+            error = "Login error."
             session['logged_in'] = False
             return render_template('login.html', error=error, form=form)
         elif userExist == None:
-            error = "Invalid password."
+            error = "Login Error"
             session['logged_in'] = False
             return render_template('login.html', error=error, form=form)
         else:

@@ -6,41 +6,19 @@
 
         <link href="\static\style.css" rel="stylesheet">
          
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous">
-
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
-        rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-         crossorigin="anonymous">
-
     </head>
 
          {% if session.logged_in %}
 
     <nav id="top loading" style="background-color: white;">
         <ul>
-    
-            <li>
-    
-                <div id="mySidenav" class="sidenav" style="color:white;">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="about.html">Profile</a>
-                    <a href="contacts/contacts.html">Friends</a>
-                </div>
-    
-                <div id="main" style="text-align:right;">
-                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-                </div>
-    
-            </li>
-    
+    <br />
             <li id="company-name">
                 <a href="#">FabChat
                 </a>
             </li>
     
-            <span style="margin-right:5%!important;">
+            <span style="margin-right:5%!important;" class="nav-bar-menu">
                 <li>
                     <a href="{{url_for('show_posts')}}">Feed</a>
                 </li>
@@ -53,16 +31,23 @@
                 <li>
                     <a href="{{url_for('Profile')}}">Profile</a>
                 </li>
-                <a href="{{url_for('logout')}}">
+                <li><a href="{{url_for('logout')}}">
                     Signout
                 </a>
+                </li>
             </span>
+            <br />
+            <br />
         </ul>
     </nav>
     {% endif %}
 
 
     <body onload="myFunction()" id="body">
+
+        <div class="spaces">
+
+        </div>
         
         <!--
             <div class="loader-container">
@@ -86,34 +71,7 @@
             </div>
             {% endfor %} {% block body %}{% endblock %}
         </div>
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "250px";
-                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("main").style.marginLeft = "0";
-                document.body.style.backgroundColor = "white";
-            }
-            // Get the modal
-            var modal = document.getElementById('mySidenav');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-            crossorigin="anonymous"></script>
-        <script src="https: //cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/af.js">
-        </script>
+        
         <script>
             var myVar;
 

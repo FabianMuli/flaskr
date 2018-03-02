@@ -1,7 +1,7 @@
 body,
 html {
     font-family: cursive;
-    background: white!;
+    margin: 0;
 }
 
 h1,
@@ -16,19 +16,46 @@ a {
     color: black;
     font-family: cursive;
     font-size: 1.2em;
+    transition: color 0.4s;
+    position: relative;
 }
 
 a:hover {
     color: rgb(57, 188, 231);
-    text-decoration: underline;
 }
 
-h1 {
-    border-bottom: 2px solid #eee;
+nav ul li a::after,
+.login-h1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(57, 188, 231);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+
+nav ul li a:hover::after,
+.login-h1:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.login-h1::after {
+    background-color: black;
+    width: 50%;
+    margin-left: 88px;
 }
 
 h2 {
     font-size: 1.2em;
+}
+
+div.spaces {
+    padding: 40px;
 }
 
 .fieldset {
@@ -85,10 +112,12 @@ h2 {
 }
 
 nav {
-    padding: 50px o;
-    min-width: 500px;
+    width: 100%;
     z-index: 100;
     background-color: white!important;
+    position: fixed;
+    top: 0%;
+    margin-top: -20px;
 }
 
 nav ul {
@@ -102,24 +131,21 @@ nav ul li {
 }
 
 nav ul li a {
-    padding: 20px;
-    color: #000000;
+    margin-left: 40px;
+    color: #929191;
     font-size: 1.4em;
     font-family: cursive;
     text-decoration: none;
-    display: block;
 }
 
 nav ul li a:hover,
 .hover:hover {
     color: black!important;
-    background-color: lightgray!important;
     border-radius: 10px;
 }
 
-nav ul li a:active {
-    background-color: lightgray;
-    text-decoration: underline;
+.nav-bar-menu {
+    margin-left: 290px;
 }
 
 footer {
@@ -266,15 +292,16 @@ span.psw {
     font-weight: bold;
 }
 
-#company-name:hover {
-    color: black;
-}
-
 #company-name {
     font-family: cursive;
     color: black;
-    letter-spacing: 10px;
+    letter-spacing: 7px;
     list-style: none;
+    font-size: 1.4em;
+}
+
+#company-name:hover {
+    color: black;
 }
 
 .close:hover,
@@ -362,7 +389,7 @@ span.psw {
 
 .form {
     text-align: center;
-    width: 70%;
+    width: 100%;
     height: 30%;
     font-family: cursive;
 }
@@ -737,8 +764,8 @@ form h1.forgot {
 .login-h1 {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    text-decoration: underline;
     color: rgb(102, 98, 98);
+    position: relative;
 }
 
 div.grey-h1 {
@@ -796,10 +823,33 @@ div.grey-dv {
 .login-a {
     font-style: oblique;
     color: rgb(202, 199, 199);
-    text-decoration: none;
     font-size: 0.7em;
-    padding-left: 60px;
+    margin-left: 60px;
     outline: none;
+    position: relative;
+    text-decoration: none;
+}
+
+.login-a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(57, 188, 231);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+
+.login-a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.login-a:hover {
+    text-decoration: none;
 }
 
 .login-form {
@@ -824,7 +874,10 @@ div.grey-dv {
 .sign-up-login-button {
     font-size: 0.8em;
     color: rgb(185, 184, 184);
-    text-decoration: underline;
+}
+
+.sign-up-login-button:hover {
+    text-decoration: none;
 }
 
 .login-label {
@@ -839,8 +892,9 @@ div.grey-dv {
 }
 
 .signup_fieldset {
-    width: 40%;
-    border: solid 2px white ;
+    margin-top: 40px;
+    width: 30%;
+    border: solid 2px rgb(245, 245, 245);
     margin-left: 500px;
     background-color: white;
     border-radius: 10px;
@@ -853,4 +907,9 @@ div.grey-dv {
 
 h1.logo {
     letter-spacing: 2px;
+}
+
+.sign-up-grey-div {
+    background-color: rgb(245, 245, 245);
+    margin: -10px -9px -10px -10px;
 }
