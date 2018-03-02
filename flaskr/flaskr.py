@@ -231,7 +231,6 @@ def popular_posts():
 def logout():
     session.pop('logged_in', None)
     session.pop('name', None)
-    flash('You logged out')
     return redirect(url_for('login'))
 
 #404 error
