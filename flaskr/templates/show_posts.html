@@ -54,15 +54,16 @@
 
                 </ul>
 
-                <a href="#top" style="margin-left: 19%;">
-                    <button class=top>
-                        Top
-                    </button>
-                </a>
             </fieldset>
         </div>
-        {% endblock %}
+        <button class="top" id="top" onclick="topFunction()" title="Go to top">
+            Top
+        </button>
 
+        <script type="text/javascript" src="{{url_for('static', filename='scrollToTop.js')}}">
+        </script>
+
+        {% endblock %}
     </body>
 
     {% else %}
@@ -73,9 +74,5 @@
     </p>
 
     {% endif %}
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/af.js">
-    </script>
 
 </html>

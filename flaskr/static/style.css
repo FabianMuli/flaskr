@@ -61,7 +61,7 @@ div.spaces {
 }
 
 .fieldset {
-    width: 70%!important;
+    width: 90%!important;
 }
 
 .page {
@@ -425,19 +425,25 @@ span.psw {
 }
 
 .top {
+    display: none;
+    position: fixed;
+    z-index: 100;
     background-color: lightgray;
     border: none;
-    padding: 5px;
-    width: 80px;
-    height: 30px;
-    border-radius: 7px;
+    padding: 15px;
+    outline: none;
+    bottom: 20px;
+    right: 149px;
+    width: 49.9px;
+    border-radius: 49pc;
     cursor: pointer;
     font-family: "Shadows Into Light", cursive;
-    margin-left: 50%;
+    font-weight: bold;
+    font-size: 0.9em;
 }
 
 .top:hover {
-    box-shadow: 2px 2px 2px 2px gray;
+
 }
 
 footer {
