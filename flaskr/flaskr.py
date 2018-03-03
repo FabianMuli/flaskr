@@ -55,7 +55,6 @@ def close_db(error):
 @app.route('/entries')
 def show_posts():
     form = PostForm(request.form)
-    name = session.get('name')
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
@@ -79,7 +78,7 @@ def add_entry():
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
-    return render_template('show_posts.html', title="Home", posts=posts, form=form)
+    return render_template('show_posts.html', title="Home", posts=posts, form=form,error=error)
 
 #upload profile photo
 @app.route('/addpic', methods=['GET','POST'])
