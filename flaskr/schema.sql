@@ -1,6 +1,6 @@
 drop table if exists comments;
 create table comments(
-    id integer autoincrement primary key,
+    id integer primary key,
     'name' text not null,
     'post' varchar(100) not null,
     'claps' integer
@@ -8,7 +8,7 @@ create table comments(
 
 drop table if exists users;
 create table users(
-    id integer primary key autoincrement,
+    id integer primary key,
     'name' text not null,
     'email' text not null,
     'password' text not null,
@@ -17,7 +17,7 @@ create table users(
 
 drop table if exists followers;
 create table followers(
-    id integer primary key autoincrement,
+    id integer primary key,
     'name' text not null,
     'follower' text,
     'following' text
@@ -25,7 +25,7 @@ create table followers(
 
 drop table if exists profile;
 create table profile(
-    id integer primary key autoincrement,
+    id integer primary key,
     'name' text not null,
     'email' text,
     'phone' integer,
@@ -35,7 +35,7 @@ create table profile(
 
 drop table if exists messages;
 create table messages(
-    id integer primary key autoincrement,
+    id integer primary key,
     'user' text not null,
     'message' varchar(100) not null
 );
