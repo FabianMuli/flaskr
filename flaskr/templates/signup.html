@@ -5,7 +5,8 @@
             Signup
         </title>
         <link rel="stylesheet" type="text/css" href="/static/style.css">
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
 
     <body class="signup-body">
@@ -36,16 +37,29 @@
                             <br />
                             {{ render_field(form.mobile_number, placeholder="mobile number", class="login-input") }}
                             <br />
-                            {{ render_field(form.password, placeholder="password",class="login-input")}}
+                            <div></div>{{ render_field(form.password, placeholder="password",class="login-input", id="password")}}<i class="eye-icon fa fa-eye" onclick="showPassword()"></i>
                             <br />
-                            {{ render_field(form.password2, placeholder="confirm password", class="login-input")}}
+                            {{ render_field(form.password2, placeholder="confirm password", class="login-input", id="password2")}}
                             <br />
                         </dl>
-                        <p><input type="submit" value="sign up" class="submit_button"></p>
+                        <div class="sign-up-grey-div-bottom">
+                        <p><input type="submit" value="sign up" class="submit_button"> <span class="sign-up-login"><a href="
+                            {{url_for('login')}}">or Login</a></span></p>
+                        </div>
                         </form>
                     </fieldset>
-                
+                <div class="spaces">
+                    
+                </div>
         </div>
+        
+        <script type="text/javascript" src="{{url_for('static', filename='showPassword.js')}}">
+            
+        </script>
+        <script src="/static/Jquery.js">
+        </script>
+        <script src="/static/showPasswords.js">
+        </script>
         {% endblock %}
     </body>
 </html>

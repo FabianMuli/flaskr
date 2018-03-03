@@ -25,7 +25,8 @@ a:hover {
 }
 
 nav ul li a::after,
-.login-h1::after {
+.login-h1::after,
+.sign-up-login> ::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -39,7 +40,8 @@ nav ul li a::after,
 }
 
 nav ul li a:hover::after,
-.login-h1:hover::after {
+.login-h1:hover::after,
+.sign-up-login>a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
@@ -235,7 +237,6 @@ p a {
     text-decoration: none;
     margin: 5px 2px;
     border-radius: 50%;
-    background-color: lightgray;
 }
 
 span.psw {
@@ -404,13 +405,15 @@ span.psw {
 }
 
 .submit_button {
-    border: solid 2px lightblue;
+    border: solid 2px rgb(198, 187, 224);
     width: 100px;
     padding: 7px;
     background-color: transparent;
     border-radius: 10px;
-    color: rgb(170, 169, 169);
+    color: rgb(26, 24, 24);
+    font-size: 1.1em;
     cursor: pointer;
+    transition: box-shadow 0.4s;
 }
 
 .submit_button:hover {
@@ -894,10 +897,11 @@ div.grey-dv {
 .signup_fieldset {
     margin-top: 40px;
     width: 30%;
-    border: solid 2px rgb(245, 245, 245);
+    border: solid 1px rgb(245, 245, 245);
     margin-left: 500px;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 4px 2px 2px 4px rgb(235, 235, 235);
 }
 
 .sign-up-h2 {
@@ -910,6 +914,31 @@ h1.logo {
 }
 
 .sign-up-grey-div {
-    background-color: rgb(245, 245, 245);
-    margin: -10px -9px -10px -10px;
+    background-color: rgb(240, 240, 240);
+    margin: -6px -10px -10px -10px;
 }
+
+.sign-up-grey-div-bottom {
+    background-color: rgb(236, 234, 234);
+    margin: -10px -11px -14px -10px;
+    padding: 10px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.sign-up-login>a {
+    color: rgb(177, 175, 175);
+    font-size: 1em;
+    font-style: oblique;
+    transition: color 0.49s;
+}
+
+.sign-up-login>a:hover {
+    color: rgb(57, 188, 231);
+}
+
+.sign-up-login {
+    margin-left: 80px;
+}
+
+
+
