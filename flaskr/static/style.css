@@ -61,7 +61,7 @@ div.spaces {
 }
 
 .fieldset {
-    width: 90%!important;
+    width: 90% ;
 }
 
 .page {
@@ -116,7 +116,7 @@ div.spaces {
 nav {
     width: 100%;
     z-index: 100;
-    background-color: white!important;
+    background-color: white ;
     position: fixed;
     top: 0%;
     margin-top: -20px;
@@ -142,7 +142,7 @@ nav ul li a {
 
 nav ul li a:hover,
 .hover:hover {
-    color: black!important;
+    color: black ;
     border-radius: 10px;
 }
 
@@ -273,7 +273,7 @@ span.psw {
 /* Modal Content/Box */
 
 .modal-content {
-    color: #fefefe!important;
+    color: #fefefe ;
     margin: 5% auto 15% auto;
     /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
@@ -338,7 +338,7 @@ span.psw {
 }
 
 .right {
-    text-align: right!important;
+    text-align: right ;
 }
 
 .sidenav {
@@ -358,7 +358,7 @@ span.psw {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: white!important;
+    color: white ;
     display: block;
     transition: 0.3s;
 }
@@ -374,8 +374,8 @@ span.psw {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-    background-color: #111!important;
-    color: white!important;
+    background-color: #111 ;
+    color: white ;
 }
 
 #main {
@@ -459,7 +459,7 @@ footer {
 /*reset password page styling */
 
 .change-password-body {
-    background-color: rgb(94, 94, 202)!important;
+    background-color: rgb(94, 94, 202) ;
     margin: 0;
     margin-top: 0;
     border-radius: 20px;
@@ -492,7 +492,7 @@ footer {
 }
 
 .change-password-header-div {
-    background-color: rgb(94, 94, 202)!important;
+    background-color: rgb(94, 94, 202) ;
 }
 
 .submit-button {
