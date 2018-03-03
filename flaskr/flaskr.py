@@ -6,7 +6,6 @@ The backend of the app
 import os
 import sqlite3
 from flask import Flask, request, render_template, flash, session, g, redirect, url_for, abort
-from urllib.parse import urljoin
 from .forms import LoginForm, SignupForm, PostForm, UploadPhoto, ChangePasswordForm
 #create the application instance
 app = Flask(__name__)
