@@ -1,6 +1,6 @@
 drop table if exists comments;
 create table comments(
-    id integer primary key autoincrement,
+    id integer autoincrement primary key,
     'name' text not null,
     'post' varchar(100) not null,
     'claps' integer
