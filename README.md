@@ -1,2 +1,2 @@
-# flaskr
-Social Media platform
+# simple-flask-chatroom
+simple chatroom using flask
