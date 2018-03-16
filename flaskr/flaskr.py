@@ -21,6 +21,7 @@ app.config.update(
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 
+# connecting the database
 def connect_db():
     # connects to the specific database
     rv = sqlite3.connect(app.config['DATABASE'])
@@ -28,6 +29,9 @@ def connect_db():
     return rv
 
 
+
+
+# initializing the database
 def init_db():
     db = get_db()
     with app.open_resource('schema.sql', mode='r') as f:
@@ -35,6 +39,9 @@ def init_db():
     db.commit()
 
 
+
+
+# initializing the database from the cli
 @app.cli.command('initdb')
 def initdb_command():
     # initialize the database
@@ -42,6 +49,9 @@ def initdb_command():
     print("Initialized the database successfully.")
 
 
+
+
+# getting the database
 def get_db():
     # opens new database connection if there is none yet
     #  yet gor the current application context
@@ -59,7 +69,7 @@ def close_db(error):
 
 
 
-# show entries
+# show messages
 @app.route('/entries')
 def show_posts():
     form = PostForm(request.form)
@@ -71,7 +81,7 @@ def show_posts():
 
 
 
-# add new entry
+# add new messages
 @app.route('/add', methods=['POST'])
 def add_entry():
     form = PostForm(request.form)
@@ -93,14 +103,6 @@ def add_entry():
     return render_template(
         'show_posts.html', title="Home", posts=posts, form=form, error=error
     )
-
-
-
-
-# upload profile photo
-@app.route('/addpic', methods=['GET', 'POST'])
-def profilePhoto():
-    return redirect(url_for('Profile'))
 
 
 
@@ -196,38 +198,7 @@ def login():
 
 
 
-# trending
-@app.route('/Trending', methods=['POST', 'GET'])
-def Trending():
-    return render_template('Trending.html')
-
-
-
-
-# profile page
-@app.route('/user', methods=['GET', 'POST'])
-def Profile():
-    name = session.get('name')
-    form = UploadPhoto(request.form)
-    picture = form.picture.data
-    form.picture.data = ''
-    db = get_db()
-    if form.validate():
-        db.execute(
-            '''insert into profile(name,profilePhoto) values (?,?)''', (name, picture)
-        )
-        flash("Profile photo uploaded successfully")
-    return render_template('profile.html', name=name, form=form)
-
-
-@app.route('/followers')
-def Followers():
-    db = get_db()
-    cur = db.execute('''select name from followers order by id asc''')
-    followers = cur.fetchall()
-    return render_template('followers.html', followers=followers)
-
-
+# changing the password if forgotten
 @app.route('/change_password', methods=['POST', 'GET'])
 def change_password():
     form = ChangePasswordForm(request.form)
@@ -242,42 +213,6 @@ def change_password():
             return render_template('change_password.html', form=form, error=error)
 
     return render_template('change_password.html', form=form, error=error)
-
-
-
-
-# adding followers
-@app.route('/addFollowers')
-def addFollowers():
-    db = get_db()
-    follower = "Fabian muema"
-    db.execute('''insert into followers(name) values (?)''', (follower,))
-    db.commit()
-    return redirect(url_for('Followers'))
-
-
-
-
-# when a user clicks the unfollow button
-@app.route('/remove')
-def removeFollowers():
-    db = get_db()
-    follower = "Fabian muema"
-    db.execute('''delete from followers where name = ?''', (follower,))
-    db.commit()
-    return redirect(url_for('Followers'))
-
-
-
-
-# popular posts
-@app.route('/popular_posts', methods=['GET', 'POST'])
-def popular_posts():
-    if session.get('logged_in'):
-        return render_template("popular_posts.html")
-
-    elif session.get('logged_out'):
-        abort(401)
 
 
 
