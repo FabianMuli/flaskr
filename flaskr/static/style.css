@@ -431,7 +431,6 @@ span.psw {
     background-color: lightgray;
     border: none;
     padding: 15px;
-    outline: none;
     bottom: 20px;
     right: 149px;
     width: 49.9px;
@@ -441,6 +440,11 @@ span.psw {
     font-weight: bold;
     font-size: 0.9em;
 }
+
+.top:focus{
+    outline: none;
+}
+
 footer {
     font-family: cursive;
 }
@@ -498,8 +502,11 @@ footer {
     font-size: 0.9em;
     background-color: rgb(255, 255, 255);
     transition: width 1s, box-shadow 0.1s;
-    outline: none;
     cursor: pointer;
+}
+
+.submit-button:focus {
+    outline: none;
 }
 
 .submit-button:hover {
@@ -829,9 +836,12 @@ div.grey-dv {
     color: rgb(202, 199, 199);
     font-size: 0.7em;
     margin-left: 60px;
-    outline: none;
     position: relative;
     text-decoration: none;
+}
+
+.login-a:focus {
+    outline: none;
 }
 
 .login-a::after {
