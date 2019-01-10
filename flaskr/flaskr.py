@@ -171,7 +171,7 @@ def login():
         if emailExist == None:
             error = "Login error."
             session['logged_in'] = False
-            return render_template('login.html', error=error, form=form)
+            render_template('login.html', error=error, form=form)
 
         elif userExist == None:
             error = "Login Error"
