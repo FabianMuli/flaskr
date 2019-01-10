@@ -118,12 +118,12 @@ nav {
     z-index: 100;
     background-color: white ;
     position: fixed;
-    top: 0%;
+    top: 0;
     margin-top: -20px;
 }
 
 nav ul {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0)0%, rgba(255, 255, 255, 0.2)25%, rgba(255, 255, 255, 0.2)75%, rgba(255, 255, 255, 0)100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0)0, rgba(255, 255, 255, 0.2)25%, rgba(255, 255, 255, 0.2)75%, rgba(255, 255, 255, 0)100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     border-radius: 10px;
 }
@@ -151,7 +151,7 @@ nav ul li a:hover,
 }
 
 footer {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0)0%, rgba(255, 255, 255, 0.2)25%, rgba(255, 255, 255, 0.2)75%, rgba(255, 255, 255, 0)100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0)0, rgba(255, 255, 255, 0.2)25%, rgba(255, 255, 255, 0.2)75%, rgba(255, 255, 255, 0)100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     text-align: center;
@@ -381,7 +381,7 @@ span.psw {
 #main {
     transition: margin-left .5s;
     padding: 16px;
-    left: 0px;
+    left: 0;
 }
 
 .logo {
@@ -921,7 +921,7 @@ h1.logo {
     background-color: rgb(236, 234, 234);
     margin: -10px -11px -14px -10px;
     padding: 10px;
-    border-radius: 0px 0px 4px 4px;
+    border-radius: 0 0 4px 4px;
 }
 
 .sign-up-login>a {
