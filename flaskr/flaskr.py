@@ -94,13 +94,13 @@ def add_entry():
         db.execute('''insert into comments(name, post) values(?, ?)''', (name, post))
         db.commit()
         flash("New post was send")
-        return redirect(url_for('show_posts'))
+        redirect(url_for('show_posts'))
 
     error = "An error occured"
     db = get_db()
     cur = db.execute('select name, post from comments order by id desc')
     posts = cur.fetchall()
-    return render_template(
+    render_template(
         'show_posts.html', title="Home", posts=posts, form=form, error=error
     )
 
@@ -126,15 +126,15 @@ def signup():
         samePhone = cur.fetchone()
         if sameName != None:
             flash("The username is already taken, pick another!")
-            return redirect(url_for('signup'))
+            redirect(url_for('signup'))
 
         elif sameEmail != None:
             flash("This email is already taken! Choose another.")
-            return redirect(url_for('signup'))
+            redirect(url_for('signup'))
 
         elif samePhone != None:
             flash("This mobile number is already taken! Choose another.")
-            return redirect(url_for('signup'))
+            redirect(url_for('signup'))
 
         else:
             db.execute(
@@ -145,9 +145,9 @@ def signup():
             flash("You have successfully signed up!")
             session['logged_in'] = True
             session['name'] = name
-            return redirect(url_for('show_posts'))
+            redirect(url_for('show_posts'))
 
-    return render_template('signup.html', form=form, error=error)
+    render_template('signup.html', form=form, error=error)
 
 
 
@@ -176,7 +176,7 @@ def login():
         elif userExist == None:
             error = "Login Error"
             session['logged_in'] = False
-            return render_template('login.html', error=error, form=form)
+            render_template('login.html', error=error, form=form)
 
         else:
             session['logged_in'] = True
@@ -191,9 +191,9 @@ def login():
             name = session.get('name')
             welcome = "Welcome back, " + name
             flash(welcome)
-            return redirect(request.args.get('next') or url_for('show_posts'))
+            redirect(request.args.get('next') or url_for('show_posts'))
 
-    return render_template('login.html', error=error, form=form)
+    render_template('login.html', error=error, form=form)
 
 
 
@@ -210,9 +210,9 @@ def change_password():
         emailExist = cur.fetchone()
         if emailExist == None:
             error = "Email address not found."
-            return render_template('change_password.html', form=form, error=error)
+            render_template('change_password.html', form=form, error=error)
 
-    return render_template('change_password.html', form=form, error=error)
+    render_template('change_password.html', form=form, error=error)
 
 
 
